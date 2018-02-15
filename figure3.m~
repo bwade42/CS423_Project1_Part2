@@ -1,3 +1,10 @@
+%% E = global coupling strength return result from mn
+%% N = total number of elements
+%% i = element
+%% n = current generations(generation)
+%% R = Reprodutive fitness of population i
+%% K = carrying capacity
+
 function result = figure3()
 generations = 10;
 N = 10; % total number of elements used in paper 1000 using 10 for testing
@@ -31,16 +38,16 @@ for i = 2: generations
       LocalDynamics = LD(R,i,K);
       
     %%Calculate the Mean Field from equation #4 %%
-    %% There is a bug here  you will see when running plot %%
        Mn = IMF(X,N);
-       plot(Mn,'*');
-       
+       disp(Mn);
     %% Plug everything into equation #1 %%
     %% loop through each coupling strength
     %% im just using e5 for now to test the function %%
         result = (1 - e5) * LocalDynamics * (e5 * Mn);
-        result = X(j,i); %%update the matrix with the result value %%
-        %%plot(result,'*');
+   
+     %%update the matrix with the result value
+     %% Not quite right yet, need to play around with e
+       
     end  
 end
 
